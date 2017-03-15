@@ -10,7 +10,7 @@ mpl.rcParams['legend.fontsize']=16
 mpl.rcParams['legend.frameon']=False
 mpl.rcParams['axes.labelsize']=20
 
-number_of_contributions = 3
+number_of_contributions = 4
 sim_names = range(number_of_contributions)
 plotcolors = range(number_of_contributions)
 time = range(number_of_contributions)
@@ -40,10 +40,17 @@ time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc
 
 cc = cc + 1
 #give a name for the legends
-sim_names[cc] = r"${\tt FLASH}$"
+sim_names[cc] = r"${\tt FLASH-M1}$"
 plotcolors[cc] = 'g'
 #scalars
 time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_FLASHData()
+
+cc = cc + 1
+#give a name for the legends
+sim_names[cc] = r"${\tt FLASH-IDSA}$"
+plotcolors[cc] = 'b'
+#scalars
+time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_FLASHIDSAData(0)
 
 #template
 #cc = cc + 1
