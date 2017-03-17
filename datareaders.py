@@ -56,13 +56,11 @@ def get_FLASHData():
     return time,rsh,massaccret,lnue,lanue,lnux,enue,eanue,enux
 
 def get_FLASHIDSAData(type=0):
-    if type==0:
-        file = "./FLASHIDSAdata/s20WH07_GREP_SFHo_IDSA_small.d"
-    else:
-        file = "./FLASHIDSAdata/s20WH07_GREP_SFHo_IDSA_iter_small.d"
+    tshift = 14.83*1e-3 # [sec]
+    file = "./FLASHIDSAdata/s20WH07_GREP_SFHo_IDSA_fluid_iter_170316_small.d"
     mev_to_erg = 1.60217733e-6
     db = np.loadtxt(file,unpack=True)
-    time = db[0]         # [sec]
+    time = db[0]+tshift         # [sec]
     rsh  = db[11]/1.e5   # [km]
     massaccret = db[14]  # [msun/sec]
     massaccret = massaccret/1.9889e33
