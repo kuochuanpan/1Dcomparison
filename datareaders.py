@@ -55,9 +55,21 @@ def get_FLASHData():
     lnux = lnux/4.0
     return time,rsh,massaccret,lnue,lanue,lnux,enue,eanue,enux
 
+def get_FLASHASLData():
+    file = "./FLASHASLdata/ccsn1d_ASL.dat"
+    time, rsh, massaccret, lnue, lanue, lnux, enue, eanue, enux = np.loadtxt(file,usecols=(0,11,13,33,34,35,42,43,44), unpack=True)
+    rsh = rsh/1e5
+    massaccret = massaccret/1.9889e33
+    lnue = lnue/1.e51
+    lanue = lanue/1.e51
+    lnux = lnux/1.e51
+    #lnux = lnux/4.0
+    time = time + 14.83*1e-3
+    return time,rsh,massaccret,lnue,lanue,lnux,enue,eanue,enux
+
 def get_FLASHIDSAData(type=0):
-    tshift = 14.83*1e-3 # [sec]
-    file = "./FLASHIDSAdata/s20WH07_GREP_SFHo_IDSA_fluid_iter_170316_small.d"
+    tshift = 0.0 #14.83*1e-3 # [sec]
+    file = "./FLASHIDSAdata/s20WH07_GREP_SFHo_IDSA_1D_170322_small.d"
     mev_to_erg = 1.60217733e-6
     db = np.loadtxt(file,unpack=True)
     time = db[0]+tshift         # [sec]

@@ -10,7 +10,7 @@ mpl.rcParams['legend.fontsize']=16
 mpl.rcParams['legend.frameon']=False
 mpl.rcParams['axes.labelsize']=20
 
-number_of_contributions = 4
+number_of_contributions = 5
 sim_names = range(number_of_contributions)
 plotcolors = range(number_of_contributions)
 time = range(number_of_contributions)
@@ -51,6 +51,13 @@ sim_names[cc] = r"${\tt FLASH-IDSA}$"
 plotcolors[cc] = 'b'
 #scalars
 time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_FLASHIDSAData(0)
+
+cc = cc + 1
+#give a name for the legends
+sim_names[cc] = r"${\tt FLASH-ASL}$"
+plotcolors[cc] = 'r'
+#scalars
+time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_FLASHASLData()
 
 #template
 #cc = cc + 1
@@ -130,7 +137,7 @@ plt.gca().add_artist(legend1)
 plt.xlabel("$t_{\mathrm{pb}}$ [s]")
 plt.ylabel(r"$\langle E_\nu \rangle$ [MeV]")
 plt.xlim((-0.05,0.5))
-plt.ylim((5.,20))
+plt.ylim((5.,25))
 plt.savefig("./plots/avee_nue_anue.pdf")
 
 plt.clf()
